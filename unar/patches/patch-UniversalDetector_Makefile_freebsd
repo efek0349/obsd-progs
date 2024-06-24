@@ -1,0 +1,44 @@
+--- UniversalDetector/Makefile.freebsd.orig	Mon Jun 24 22:09:25 2024
++++ UniversalDetector/Makefile.freebsd	Mon Jun 24 22:04:58 2024
+@@ -9,19 +9,20 @@
+ # Options for compilation
+ 
+ GNUSTEP_OPTS =	-DGNUSTEP \
+-		-DGNU_RUNTIME=1 \
+ 		-D_NATIVE_OBJC_EXCEPTIONS \
+-		-fgnu-runtime \
+ 		-fexceptions \
+ 		-fobjc-exceptions \
++        -fobjc-runtime=gnustep-2.2 \
++        -fblocks \
+ 		-fconstant-string-class=NSConstantString
+ 
+ GCC_OPTS = 	-O2 \
+ 		-Wno-import \
+ 		-Wno-multichar \
+-		-g \
++		-Wno-parentheses \
+ 		-D_FILE_OFFSET_BITS=64 \
+-		-isystem /usr/local/GNUstep/System/Library/Headers \
++        -isystem /usr/local/include/GNUstepBase \
++        -I/usr/local/include/gnustep \
+ 		-I/usr/local/include
+ 
+ OBJC_OPTS =	-std=gnu99
+@@ -40,13 +41,13 @@
+ 
+ LIBS =  -Wl,--no-whole-archive \
+ 	-lgnustep-base \
+-	-lobjc \
++	-lwavpack \
++	-lobjc2 \
++ 	-lc++abi \
+ 	-lm
+ 
+ ALL_LDFLAGS =	-Wl,--whole-archive \
+ 		-fexceptions \
+-		-fgnu-runtime \
+-		-L/usr/local/GNUstep/System/Library/Libraries \
+ 		-L/usr/local/lib \
+ 		$(LDFLAGS)
+ 
