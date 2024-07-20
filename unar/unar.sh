@@ -3,8 +3,10 @@ git clone https://github.com/MacPaw/XADMaster.git
 
 git clone https://github.com/MacPaw/universal-detector.git UniversalDetector
 
-cd XADMaster/
+for p in patches/patch-*;do patch < "$p";done 
 
-patch < patches/*
+cd XADMaster
 
 gmake -f Makefile.freebsd
+
+cp unar lsar /usr/local/bin/
