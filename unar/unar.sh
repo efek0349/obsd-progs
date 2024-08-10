@@ -9,4 +9,4 @@ cd XADMaster
 
 gmake -f Makefile.freebsd
 
-cp unar lsar /usr/local/bin/
+doas cp -v unar lsar /usr/local/bin/

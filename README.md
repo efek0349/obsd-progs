@@ -1,1 +1,1 @@
-#Information for compilation
+#OpenBSD ports

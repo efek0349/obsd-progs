@@ -3,12 +3,15 @@ git clone https://github.com/openboardview/openboardview.git
 
 cd openboardview
 
-cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -D CMAKE_CXX_FLAGS="-L/usr/X11R6/lib -I/usr/X11R6/include"
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -D CMAKE_CXX_FLAGS="-L/usr/X11R6/lib -I/usr/X11R6/include  -Wno-unused-command-line-argument -Wno-absolute-value -Wno-unused-variable"
 
 make -C build
 
+#copy
+cp -v build/src/openboardview/openboardview  $HOME/bin
+
 #run
-./build/src/openboardview/openboardview 
+./$HOME/bin/openboardview
 
 #Opening FZ file in OpenboardView may show an error "FZ key null"
 
